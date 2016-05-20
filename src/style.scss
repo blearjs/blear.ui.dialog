@@ -1,0 +1,75 @@
+$bg: #fff;
+$header-color: #F7F7F7;
+$footer-color: #fff;
+$border-color: #eee;
+$title-color: #444;
+$close-color: #bbb;
+$close-hover-color: darken($close-color, 10%);
+$close-hover-bg: darken($header-color, 10%);
+
+.dkui-dialog {
+  border-radius: 4px;
+  background: $bg;
+  overflow: hidden;
+  border: 1px solid $border-color;
+
+  &-header {
+    line-height: 40px;
+    text-align: center;
+    background: $header-color;
+    border-bottom: 1px solid $border-color;
+
+    &-title {
+      text-align: center;
+      font-size: 16px;
+      color: $title-color;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font: 20px/40px serif;
+    color: $close-color;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+
+    &:hover {
+      color: $close-hover-color;
+      background: $close-hover-bg;
+    }
+  }
+
+  &-container {
+
+  }
+
+  &-footer {
+    background: $footer-color;
+    border-top: 1px solid $border-color;
+    display: table;
+    width: 100%;
+
+    &-btn {
+      float: left;
+      width: percentage(1/1);
+    }
+
+    &_2 &-btn {
+      width: percentage(1/2);
+    }
+
+    &_2 &-btn + &-btn,
+    &_3 &-btn + &-btn {
+      border-left: 1px solid $border-color;
+    }
+
+    &_3 &-btn {
+      width: percentage(1/3);
+    }
+  }
+}

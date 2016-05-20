@@ -1,0 +1,43 @@
+.dkui-dialog {
+  border-radius: 4px;
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid #eee; }
+  .dkui-dialog-header {
+    line-height: 40px;
+    text-align: center;
+    background: #F7F7F7;
+    border-bottom: 1px solid #eee; }
+    .dkui-dialog-header-title {
+      text-align: center;
+      font-size: 16px;
+      color: #444; }
+  .dkui-dialog-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font: 20px/40px serif;
+    color: #bbb;
+    cursor: pointer;
+    border-top-right-radius: 4px; }
+    .dkui-dialog-close:hover {
+      color: #a2a2a2;
+      background: #dedede; }
+  .dkui-dialog-footer {
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: table;
+    width: 100%; }
+    .dkui-dialog-footer-btn {
+      float: left;
+      width: 100%; }
+    .dkui-dialog-footer_2 .dkui-dialog-footer-btn {
+      width: 50%; }
+    .dkui-dialog-footer_2 .dkui-dialog-footer-btn + .dkui-dialog-footer-btn,
+    .dkui-dialog-footer_3 .dkui-dialog-footer-btn + .dkui-dialog-footer-btn {
+      border-left: 1px solid #eee; }
+    .dkui-dialog-footer_3 .dkui-dialog-footer-btn {
+      width: 33.33333%; }
