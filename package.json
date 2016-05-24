@@ -48,7 +48,7 @@
     "blear.classes.template": "1.x",
     "blear.ui.window": "1.x",
     "blear.ui.mask": "1.x",
-    "blear.ui.index": "1.x"
+    "blear.ui": "1.x"
   },
   "devDependencies": {
   },

@@ -21,7 +21,7 @@ var Animation =    require('blear.classes.animation');
 var Template =     require('blear.classes.template');
 var Window =       require('blear.ui.window');
 var Mask =         require('blear.ui.mask');
-var UI =           require('blear.ui.index');
+var UI =           require('blear.ui');
 var template =     require('./template.html', 'html');
 
 var tpl = new Template(template);
