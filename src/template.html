@@ -1,18 +1,18 @@
-<div id="dkui-dialog-{{id}}" class="dkui-dialog {{options.addClass ? options.addClass : ''}}">
+<div id="blearui-dialog-{{id}}" class="blearui-dialog {{options.addClass ? options.addClass : ''}}">
 
-    <div class="dkui-dialog-header" @if="options.headable">
-        <div class="dkui-dialog-header-title">{{options.title}}</div>
+    <div class="blearui-dialog-header" @if="options.headable">
+        <div class="blearui-dialog-header-title">{{options.title}}</div>
     </div>
 
-    <div class="dkui-dialog-close" @if="options.headable && options.closeable">&times;</div>
+    <div class="blearui-dialog-close" @if="options.headable && options.closeable">&times;</div>
 
-    <div class="dkui-dialog-container">
+    <div class="blearui-dialog-container">
         <!--dialog-->
     </div>
 
-    <div @if="options.buttons.length" class="dkui-dialog-footer dkui-dialog-footer_{{options.buttons.length}}">
+    <div @if="options.buttons.length" class="blearui-dialog-footer blearui-dialog-footer_{{options.buttons.length}}">
         <button @for="index, button in options.buttons"
-                class="dkui-dialog-footer-btn dkui-dialog-footer-btn_{{index}} {{button.type ? 'dkbtn dkbtn_' + button.type : ''}} {{button.className ? button.className : ''}}"
+                class="blearui-dialog-footer-btn blearui-dialog-footer-btn_{{index}} {{button.type ? 'dkbtn dkbtn_' + button.type : ''}} {{button.className ? button.className : ''}}"
                 data-index="{{index}}">{{button.text}}</button>
     </div>
 </div>
