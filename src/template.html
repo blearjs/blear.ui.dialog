@@ -1,10 +1,10 @@
-<div id="blearui-dialog-{{id}}" class="blearui-dialog {{options.addClass ? options.addClass : ''}}">
+<div class="blearui-dialog-container {{options.addClass ? options.addClass : ''}}">
 
     <div class="blearui-dialog-header" @if="options.headable">
         <div class="blearui-dialog-header-title">{{options.title}}</div>
     </div>
 
-    <div class="blearui-dialog-close" @if="options.headable && options.closeable">&times;</div>
+    <div class="blearui-dialog-close" @if="options.closeable">&times;</div>
 
     <div class="blearui-dialog-container">
         <!--dialog-->

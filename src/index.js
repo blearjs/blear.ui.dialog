@@ -8,25 +8,25 @@
 
 'use strict';
 
-var access =       require('blear.utils.access');
-var object =       require('blear.utils.object');
-var typeis =       require('blear.utils.typeis');
-var fun =          require('blear.utils.function');
-var selector =     require('blear.core.selector');
-var attribute =    require('blear.core.attribute');
+var access = require('blear.utils.access');
+var object = require('blear.utils.object');
+var typeis = require('blear.utils.typeis');
+var fun = require('blear.utils.function');
+var selector = require('blear.core.selector');
+var attribute = require('blear.core.attribute');
 var modification = require('blear.core.modification');
-var event =        require('blear.core.event');
-var animation =    require('blear.core.animation');
-var Animation =    require('blear.classes.animation');
-var Template =     require('blear.classes.template');
-var Window =       require('blear.ui.window');
-var Mask =         require('blear.ui.mask');
-var UI =           require('blear.ui');
-var template =     require('./template.html', 'html');
+var event = require('blear.core.event');
+var animation = require('blear.core.animation');
+var Animation = require('blear.classes.animation');
+var Template = require('blear.classes.template');
+var Window = require('blear.ui.window');
+var Mask = require('blear.ui.mask');
+var UI = require('blear.ui');
+var template = require('./template.html');
 
 var tpl = new Template(template);
-var uiIndex = 0;
-var uiClass = UI.UI_CLASS + '-dialog';
+var gid = 0;
+var namespace = UI.UI_CLASS + '-dialog';
 var win = window;
 var doc = win.document;
 var defaults = {
@@ -181,6 +181,7 @@ var Dialog = Window.extend({
 
         options = the[_options] = object.assign(true, {}, defaults, options);
         Dialog.parent(the, {
+            position: 'absolute',
             width: options.width,
             height: options.height,
             topRate: 1 / 3,
@@ -192,34 +193,7 @@ var Dialog = Window.extend({
 
 
         the[_initNode]();
-
-        // init event
-        if (the[_closeEl]) {
-            event.on(the[_closeEl], 'click', function () {
-                the.close();
-            });
-        }
-
-        if (the[_footerEl]) {
-            event.on(the[_footerEl], 'click', 'button', function () {
-                var btnEl = this;
-                var index = attribute.data(btnEl, 'index') * 1;
-
-                the.emit('action', index);
-            });
-        }
-
-        the.on('beforeOpen', function () {
-            if (the[_mask]) {
-                the[_mask].open();
-            }
-        });
-
-        the.on('afterClose', function () {
-            if (the[_mask]) {
-                the[_mask].close();
-            }
-        });
+        the[_initEvent]();
     },
 
 
@@ -279,7 +253,9 @@ var Dialog = Window.extend({
 var _contentEl = Dialog.sole();
 var _options = Dialog.sole();
 var _initNode = Dialog.sole();
+var _initEvent = Dialog.sole();
 var _dialogEl = Dialog.sole();
+var _windowEl = Dialog.sole();
 var _headerEl = Dialog.sole();
 var _titleEl = Dialog.sole();
 var _closeEl = Dialog.sole();
@@ -287,17 +263,18 @@ var _containerEl = Dialog.sole();
 var _footerEl = Dialog.sole();
 var _mask = Dialog.sole();
 var _getElement = Dialog.sole();
+var pro = Dialog.prototype;
 
-Dialog.method(_initNode, function () {
+
+pro[_initNode] = function () {
     var the = this;
     var options = the[_options];
     // init node
     var html = tpl.render({
-        id: uiIndex++,
         options: options
     });
     the[_contentEl] = selector.query(options.el)[0];
-    the[_dialogEl] = Dialog.parent.setHTML(the, html);
+    the[_windowEl] = Dialog.parent.setHTML(the, html);
     the[_headerEl] = the[_getElement]('header');
     the[_titleEl] = the[_getElement]('header-title');
     the[_closeEl] = the[_getElement]('close');
@@ -313,16 +290,64 @@ Dialog.method(_initNode, function () {
     } else if (options.template) {
         the.setHTML(options.template);
     }
-});
+};
 
 
-/**
- * 获取元素
- * @param className
- */
-Dialog.method(_getElement, function (className) {
-    return selector.query('.' + uiClass + '-' + className, this[_dialogEl])[0];
-});
+pro[_initEvent] = function () {
+    var the = this;
+
+    the.on('rendered', function (windowEl, options) {
+        var dialogEl = the[_dialogEl] = modification.create('div', {
+            'class': namespace,
+            id: namespace + '-' + gid++
+        });
+        modification.insert(windowEl, dialogEl);
+        modification.insert(dialogEl);
+    });
+
+    the.on('willOpen', function (pos) {
+        if (the[_mask]) {
+            the[_mask].open();
+        }
+
+        attribute.style(the[_dialogEl], {
+            zIndex: UI.zIndex(),
+            display: 'block'
+        });
+
+        delete pos.zIndex;
+    });
+
+    if (the[_closeEl]) {
+        event.on(the[_closeEl], 'click', function () {
+            the.close();
+        });
+    }
+
+    if (the[_footerEl]) {
+        event.on(the[_footerEl], 'click', 'button', function () {
+            var btnEl = this;
+            var index = attribute.data(btnEl, 'index') * 1;
+
+            the.emit('action', index);
+        });
+    }
+
+    the.on('afterClose', function () {
+        if (the[_mask]) {
+            the[_mask].close();
+        }
+
+        attribute.style(the[_dialogEl], {
+            display: 'none'
+        });
+    });
+};
+
+
+pro[_getElement] = function (className) {
+    return selector.query('.' + namespace + '-' + className, this[_windowEl])[0];
+};
 
 
 require('./style.css', 'css|style');
