@@ -101,7 +101,7 @@ var defaults = {
      * @type Null|Function
      */
     openAnimation: function (to, done) {
-        var el = this.getElement();
+        var el = this.getWindowEl();
         var an = new Animation(el);
 
         attribute.style(el, {
@@ -129,7 +129,7 @@ var defaults = {
      * @type Null|Function
      */
     resizeAnimation: function (to, done) {
-        var el = this.getElement();
+        var el = this.getWindowEl();
         var an = new Animation(el);
 
         an.transit(to, {
@@ -144,7 +144,7 @@ var defaults = {
      * @type Null|Function
      */
     closeAnimation: function (to, done) {
-        var el = this.getElement();
+        var el = this.getWindowEl();
         var an = new Animation(el);
 
         attribute.style(el, {
