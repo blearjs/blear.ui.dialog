@@ -314,17 +314,15 @@ pro[_initEvent] = function () {
         modification.insert(dialogEl);
     });
 
-    the.on('willOpen', function (pos) {
+    the.on('willOpen', function () {
         if (the[_mask]) {
-            the[_mask].open();
+            the[_mask].zIndex(UI.zIndex()).open();
         }
 
         attribute.style(the[_dialogEl], {
             zIndex: UI.zIndex(),
             display: 'block'
         });
-
-        delete pos.zIndex;
     });
 
     if (the[_closeEl]) {
