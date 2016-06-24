@@ -233,6 +233,15 @@ var Dialog = Window.extend({
 
 
     /**
+     * 获取容器元素
+     * @returns {HTMLElement}
+     */
+    getContainerEl: function () {
+        return this[_containerEl];
+    },
+
+
+    /**
      * 销毁实例
      */
     destroy: function (callback) {
