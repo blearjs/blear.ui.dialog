@@ -19,7 +19,8 @@
       overflow: hidden; }
   .blearui-dialog-container {
     border-radius: 4px;
-    background: #fff; }
+    background: #fff;
+    overflow: hidden; }
   .blearui-dialog-close {
     position: absolute;
     top: 0;
