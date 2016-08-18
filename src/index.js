@@ -91,6 +91,30 @@ var defaults = {
     height: 'auto',
 
     /**
+     * 最小宽度
+     * @type Number|String
+     */
+    minWidth: 'none',
+
+    /**
+     * 最小高度
+     * @type Number|String
+     */
+    minHeight: 'none',
+
+    /**
+     * 最大宽度
+     * @type Number|String
+     */
+    maxWidth: 'none',
+
+    /**
+     * 最大高度
+     * @type Number|String
+     */
+    maxHeight: 'none',
+
+    /**
      * 按钮 `<{{text:String,type:String,className:String}}>`
      * @type Array
      */
@@ -184,6 +208,10 @@ var Dialog = Window.extend({
             position: 'absolute',
             width: options.width,
             height: options.height,
+            minWidth: options.minWidth,
+            minHeight: options.minHeight,
+            maxWidth: options.maxWidth,
+            maxHeight: options.maxHeight,
             topRate: 1 / 3,
             leftRate: 1 / 2,
             openAnimation: options.openAnimation,
