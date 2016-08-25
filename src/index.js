@@ -277,8 +277,14 @@ var Dialog = Window.extend({
 
         callback = fun.noop(callback);
         callback = fun.bind(callback, the);
-        event.un(the[_footerEl], 'click');
+
+        if (the[_footerEl]) {
+            event.un(the[_footerEl], 'click');
+        }
+
         Dialog.parent.destroy(the, function () {
+            modification.remove(the[_dialogEl]);
+
             if (the[_mask]) {
                 the[_mask].destroy(callback);
             } else {
