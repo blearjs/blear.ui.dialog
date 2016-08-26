@@ -338,12 +338,12 @@ pro[_initNode] = function () {
 
 pro[_initEvent] = function () {
     var the = this;
+    var dialogEl = the[_dialogEl] = modification.create('div', {
+        'class': namespace,
+        id: namespace + '-' + gid++
+    });
 
     the.on('rendered', function (windowEl, options) {
-        var dialogEl = the[_dialogEl] = modification.create('div', {
-            'class': namespace,
-            id: namespace + '-' + gid++
-        });
         modification.insert(windowEl, dialogEl);
         modification.insert(dialogEl);
     });
