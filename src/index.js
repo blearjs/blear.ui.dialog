@@ -216,9 +216,17 @@ var Dialog = Window.extend({
             leftRate: 1 / 2,
             openAnimation: options.openAnimation,
             resizeAnimation: options.resizeAnimation,
-            closeAnimation: options.closeAnimation
-        });
+            closeAnimation: options.closeAnimation,
+            render: function (windowEl, options) {
+                var dialogEl = this[_dialogEl] = modification.create('div', {
+                    'class': namespace,
+                    id: namespace + '-' + gid++
+                });
 
+                modification.insert(windowEl, dialogEl);
+                modification.insert(dialogEl);
+            }
+        });
 
         the[_initNode]();
         the[_initEvent]();
@@ -338,17 +346,8 @@ pro[_initNode] = function () {
 
 pro[_initEvent] = function () {
     var the = this;
-    var dialogEl = the[_dialogEl] = modification.create('div', {
-        'class': namespace,
-        id: namespace + '-' + gid++
-    });
 
-    the.on('rendered', function (windowEl, options) {
-        modification.insert(windowEl, dialogEl);
-        modification.insert(dialogEl);
-    });
-
-    the.on('willOpen', function () {
+    the.on('beforeOpen', function () {
         if (the[_mask]) {
             the[_mask].zIndex(UI.zIndex()).open();
         }
@@ -379,10 +378,6 @@ pro[_initEvent] = function () {
         if (the[_mask]) {
             the[_mask].close();
         }
-
-        attribute.style(the[_dialogEl], {
-            display: 'none'
-        });
     });
 };
 
