@@ -378,6 +378,8 @@ pro[_initEvent] = function () {
         if (the[_mask]) {
             the[_mask].close();
         }
+
+        attribute.hide(the[_dialogEl]);
     });
 };
 
