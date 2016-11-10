@@ -6,9 +6,7 @@
 
     <div class="blearui-dialog-close" @if="options.closeable">&times;</div>
 
-    <div class="blearui-dialog-container">
-        <!--dialog-->
-    </div>
+    <div class="blearui-dialog-container"></div>
 
     <div @if="options.buttons.length" class="blearui-dialog-footer blearui-dialog-footer_{{options.buttons.length}}">
         <button @for="index, button in options.buttons"

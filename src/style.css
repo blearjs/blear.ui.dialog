@@ -18,9 +18,8 @@
       height: 40px;
       overflow: hidden; }
   .blearui-dialog-container {
-    border-radius: 4px;
-    background: #fff;
-    overflow: hidden; }
+    overflow: hidden;
+    background: #fff; }
   .blearui-dialog-close {
     position: absolute;
     top: 0;
@@ -30,8 +29,7 @@
     text-align: center;
     font: 20px/40px serif;
     color: #bbb;
-    cursor: pointer;
-    border-top-right-radius: 4px; }
+    cursor: pointer; }
     .blearui-dialog-close:hover {
       color: #a2a2a2;
       background: #dedede; }

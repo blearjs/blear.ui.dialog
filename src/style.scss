@@ -32,9 +32,8 @@ $close-hover-bg: darken($header-color, 10%);
   }
 
   &-container {
-    border-radius: 4px;
-    background: $bg;
     overflow: hidden;
+    background: $bg;
   }
 
   &-close {
@@ -47,16 +46,11 @@ $close-hover-bg: darken($header-color, 10%);
     font: 20px/40px serif;
     color: $close-color;
     cursor: pointer;
-    border-top-right-radius: 4px;
 
     &:hover {
       color: $close-hover-color;
       background: $close-hover-bg;
     }
-  }
-
-  &-container {
-
   }
 
   &-footer {
