@@ -290,7 +290,7 @@ var Dialog = Window.extend({
             event.un(the[_footerEl], 'click');
         }
 
-        Dialog.parent.destroy(the, function () {
+        Dialog.invoke('destroy', the, function () {
             modification.remove(the[_dialogEl]);
 
             if (the[_mask]) {
@@ -325,7 +325,7 @@ pro[_initNode] = function () {
         options: options
     });
     the[_contentEl] = selector.query(options.el)[0];
-    the[_windowEl] = Dialog.parent.setHTML(the, html);
+    the[_windowEl] = Dialog.invoke('setHTML', the, html);
     the[_headerEl] = the[_getElement]('header');
     the[_titleEl] = the[_getElement]('header-title');
     the[_closeEl] = the[_getElement]('close');
