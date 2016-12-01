@@ -5,7 +5,8 @@
   bottom: 0;
   left: 0;
   overflow: auto;
-  display: none; }
+  display: none;
+  -webkit-overflow-scrolling: touch; }
   .blearui-dialog-header {
     text-align: center;
     background: #F7F7F7;
@@ -17,9 +18,12 @@
       line-height: 40px;
       height: 40px;
       overflow: hidden; }
-  .blearui-dialog-container {
+  .blearui-dialog-inner {
     overflow: hidden;
-    background: #fff; }
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    -webkit-border-radius: 6px;
+    border-radius: 6px; }
   .blearui-dialog-close {
     position: absolute;
     top: 0;
@@ -31,8 +35,7 @@
     color: #bbb;
     cursor: pointer; }
     .blearui-dialog-close:hover {
-      color: #a2a2a2;
-      background: #dedede; }
+      color: #a2a2a2; }
   .blearui-dialog-footer {
     background: #fff;
     border-top: 1px solid #eee;

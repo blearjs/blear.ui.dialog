@@ -15,6 +15,7 @@ $close-hover-bg: darken($header-color, 10%);
   left: 0;
   overflow: auto;
   display: none;
+  -webkit-overflow-scrolling: touch;
 
   &-header {
     text-align: center;
@@ -31,9 +32,12 @@ $close-hover-bg: darken($header-color, 10%);
     }
   }
 
-  &-container {
+  &-inner {
     overflow: hidden;
     background: $bg;
+    border: 1px solid darken($border-color, 5%);
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
   }
 
   &-close {
@@ -49,7 +53,6 @@ $close-hover-bg: darken($header-color, 10%);
 
     &:hover {
       color: $close-hover-color;
-      background: $close-hover-bg;
     }
   }
 

@@ -347,7 +347,7 @@ pro[_initNode] = function () {
 pro[_initEvent] = function () {
     var the = this;
 
-    the.on('beforeOpen', function () {
+    the.on('beforeOpen', function (pos) {
         if (the[_mask]) {
             the[_mask].zIndex(UI.zIndex()).open();
         }

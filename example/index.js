@@ -2,15 +2,11 @@
 
 
 var Dialog = require('../src/index');
-var Loading = require('blear.ui.loading');
 
 var dialog = new Dialog({
     el: '#demo',
-    width: 400,
-    height: 300,
-    maxHeight: 300
+    width: 400
 });
-var loading = new Loading();
 
 document.getElementById('open').onclick = function () {
     dialog.open();
@@ -25,6 +21,5 @@ document.getElementById('close').onclick = function () {
 };
 
 document.getElementById('open2').onclick = function () {
-    loading.open();
     dialog.open();
 };
