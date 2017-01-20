@@ -27,7 +27,7 @@ var template = require('./template.html');
 var tpl = new Template(template);
 var gid = 0;
 var namespace = UI.UI_CLASS + '-dialog';
-var defaults = {
+var defaults = object.assign(true, Window.defaults, {
     /**
      * 元素
      * @type string|HTMLElement|null
@@ -77,42 +77,6 @@ var defaults = {
     title: 'untitle',
 
     /**
-     * 宽度
-     * @type Number
-     */
-    width: 600,
-
-    /**
-     * 高度
-     * @type Number|String
-     */
-    height: 'auto',
-
-    /**
-     * 最小宽度
-     * @type Number|String
-     */
-    minWidth: 'none',
-
-    /**
-     * 最小高度
-     * @type Number|String
-     */
-    minHeight: 'none',
-
-    /**
-     * 最大宽度
-     * @type Number|String
-     */
-    maxWidth: 'none',
-
-    /**
-     * 最大高度
-     * @type Number|String
-     */
-    maxHeight: 'none',
-
-    /**
      * 按钮 `<{{text:String,type:String,className:String}}>`
      * @type Array
      */
@@ -123,8 +87,9 @@ var defaults = {
      * @type Null|Function
      */
     openAnimation: function (to, done) {
-        var el = this.getWindowEl();
-        var an = new Animation(el);
+        var the = this;
+        var el = the.getWindowEl();
+        var an = new Animation(el, the.getOptions('animationOptions'));
 
         attribute.style(el, {
             display: 'block',
@@ -153,8 +118,9 @@ var defaults = {
      * @type Null|Function
      */
     resizeAnimation: function (to, done) {
-        var el = this.getWindowEl();
-        var an = new Animation(el);
+        var the = this;
+        var el = the.getWindowEl();
+        var an = new Animation(el, the.getOptions('animationOptions'));
 
         an.transit(to, {
             duration: 234
@@ -170,8 +136,9 @@ var defaults = {
      * @type Null|Function
      */
     closeAnimation: function (to, done) {
-        var el = this.getWindowEl();
-        var an = new Animation(el);
+        var the = this;
+        var el = the.getWindowEl();
+        var an = new Animation(el, the.getOptions('animationOptions'));
 
         attribute.style(el, {
             display: 'block',
@@ -191,10 +158,15 @@ var defaults = {
         });
         an.start(function () {
             an.destroy();
+            attribute.style(el, {
+                transform: {
+                    scale: 1
+                }
+            });
             done();
         });
     }
-};
+});
 
 
 /**
@@ -236,6 +208,24 @@ var Dialog = Window.extend({
         the[_initEvent]();
     },
 
+    /**
+     * 获取配置
+     * @param key
+     * @returns {*}
+     */
+    getOptions: function (key) {
+        return UI.getOptions(this, _options, key);
+    },
+
+    /**
+     * 获取配置
+     * @param key
+     * @param val
+     * @returns {*}
+     */
+    setOptions: function (key, val) {
+        return UI.setOptions(this, _options, key, val);
+    },
 
     /**
      * 设置 dialog 标题
@@ -337,7 +327,9 @@ pro[_initNode] = function () {
     the[_footerEl] = the[_getElement]('footer');
 
     if (options.modal) {
-        the[_mask] = new Mask();
+        the[_mask] = new Mask({
+            animationOptions: the.getOptions('animationOptions')
+        });
     }
 
     if (the[_contentEl]) {
