@@ -1,6 +1,6 @@
 {
   "name": "blear.ui.dialog",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "对话框 UI",
   "scripts": {
     "live": "browser-sync start --config bs-config.js"

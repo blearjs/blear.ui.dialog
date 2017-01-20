@@ -27,8 +27,6 @@ var template = require('./template.html');
 var tpl = new Template(template);
 var gid = 0;
 var namespace = UI.UI_CLASS + '-dialog';
-var win = window;
-var doc = win.document;
 var defaults = {
     /**
      * 元素
@@ -144,8 +142,10 @@ var defaults = {
             duration: 234,
             easing: 'in-out-back'
         });
-        an.start(done);
-        an.destroy();
+        an.start(function () {
+            an.destroy();
+            done();
+        });
     },
 
     /**
@@ -159,8 +159,10 @@ var defaults = {
         an.transit(to, {
             duration: 234
         });
-        an.start(done);
-        an.destroy();
+        an.start(function () {
+            an.destroy();
+            done();
+        });
     },
 
     /**
@@ -187,8 +189,10 @@ var defaults = {
             duration: 234,
             easing: 'in-out-back'
         });
-        an.start(done);
-        an.destroy();
+        an.start(function () {
+            an.destroy();
+            done();
+        });
     }
 };
 
@@ -392,3 +396,7 @@ pro[_getElement] = function (className) {
 require('./style.css', 'css|style');
 Dialog.defaults = defaults;
 module.exports = Dialog;
+
+
+
+
