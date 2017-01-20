@@ -277,7 +277,7 @@ var Dialog = Window.extend({
     destroy: function (callback) {
         var the = this;
 
-        callback = fun.noop(callback);
+        callback = fun.ensure(callback);
         callback = fun.bind(callback, the);
 
         if (the[_footerEl]) {
