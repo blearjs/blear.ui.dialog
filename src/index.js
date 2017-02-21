@@ -348,7 +348,6 @@ pro[_initEvent] = function () {
             the[_mask].zIndex(UI.zIndex()).open();
         }
 
-        the.zIndex('auto');
         attribute.style(the[_dialogEl], {
             zIndex: UI.zIndex(),
             display: 'block'
