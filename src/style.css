@@ -43,7 +43,9 @@
     width: 100%; }
     .blearui-dialog-footer-btn {
       float: left;
-      width: 100%; }
+      width: 100%;
+      border: 0;
+      box-shadow: none; }
     .blearui-dialog-footer_2 .blearui-dialog-footer-btn {
       width: 50%; }
     .blearui-dialog-footer_2 .blearui-dialog-footer-btn + .blearui-dialog-footer-btn,
