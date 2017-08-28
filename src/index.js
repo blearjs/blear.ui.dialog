@@ -65,6 +65,12 @@ var defaults = object.assign(true, Window.defaults, {
     closeable: true,
 
     /**
+     * 点击遮罩是否可以关闭对话框，如果是 modal 的话
+     * @type Boolean
+     */
+    maskHit: false,
+
+    /**
      * 添加的类
      * @type String
      */
@@ -342,6 +348,7 @@ pro[_initNode] = function () {
 
 pro[_initEvent] = function () {
     var the = this;
+    var options = the[_options];
 
     the.on('beforeOpen', function (pos) {
         if (the[_mask]) {
@@ -376,6 +383,12 @@ pro[_initEvent] = function () {
 
         attribute.hide(the[_dialogEl]);
     });
+
+    if(options.maskHit && the[_mask]) {
+        the[_mask].on('hit', function () {
+            the.close();
+        });
+    }
 };
 
 
