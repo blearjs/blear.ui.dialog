@@ -207,6 +207,7 @@ var Dialog = Window.extend({
 
                 modification.insert(windowEl, dialogEl);
                 modification.insert(dialogEl);
+                return dialogEl;
             }
         });
 
