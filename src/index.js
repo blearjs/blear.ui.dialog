@@ -8,7 +8,6 @@
 
 'use strict';
 
-var access = require('blear.utils.access');
 var object = require('blear.utils.object');
 var typeis = require('blear.utils.typeis');
 var fun = require('blear.utils.function');
@@ -16,7 +15,6 @@ var selector = require('blear.core.selector');
 var attribute = require('blear.core.attribute');
 var modification = require('blear.core.modification');
 var event = require('blear.core.event');
-var animation = require('blear.core.animation');
 var Animation = require('blear.classes.animation');
 var Template = require('blear.classes.template');
 var Window = require('blear.ui.window');
@@ -385,9 +383,11 @@ pro[_initEvent] = function () {
         attribute.hide(the[_dialogEl]);
     });
 
-    if(options.maskHit && the[_mask]) {
-        the[_mask].on('hit', function () {
-            the.close();
+    if (options.maskHit && the[_mask]) {
+        event.on(the.getOuterEl(), 'click', function (ev) {
+            if (this === ev.target) {
+                the.close();
+            }
         });
     }
 };
