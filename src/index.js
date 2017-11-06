@@ -14,12 +14,14 @@ var fun = require('blear.utils.function');
 var selector = require('blear.core.selector');
 var attribute = require('blear.core.attribute');
 var modification = require('blear.core.modification');
+var layout = require('blear.core.layout');
 var event = require('blear.core.event');
 var Animation = require('blear.classes.animation');
 var Template = require('blear.classes.template');
 var Window = require('blear.ui.window');
 var Mask = require('blear.ui.mask');
 var UI = require('blear.ui');
+
 var template = require('./template.html');
 
 var tpl = new Template(template);
@@ -348,8 +350,11 @@ pro[_initNode] = function () {
 pro[_initEvent] = function () {
     var the = this;
     var options = the[_options];
+    var scrollTop;
 
     the.on('beforeOpen', function (pos) {
+        scrollTop = layout.scrollTop(window);
+
         if (the[_mask]) {
             the[_mask].zIndex(UI.zIndex()).open();
         }
@@ -358,6 +363,11 @@ pro[_initEvent] = function () {
             zIndex: UI.zIndex(),
             display: 'block'
         });
+    });
+
+    the.on('open', function (pos) {
+        // 因为 window 外层包裹着 fixed 定位的 dialog，所以要减去窗口的滚动条距离
+        pos.top -= scrollTop;
     });
 
     if (the[_closeEl]) {
@@ -401,7 +411,4 @@ pro[_getElement] = function (className) {
 require('./style.css', 'css|style');
 Dialog.defaults = defaults;
 module.exports = Dialog;
-
-
-
 
