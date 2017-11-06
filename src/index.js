@@ -199,16 +199,16 @@ var Dialog = Window.extend({
             openAnimation: options.openAnimation,
             resizeAnimation: options.resizeAnimation,
             closeAnimation: options.closeAnimation,
-            render: function (windowEl, options) {
-                var dialogEl = this[_dialogEl] = modification.create('div', {
-                    'class': namespace,
-                    id: namespace + '-' + gid++
-                });
-
-                modification.insert(windowEl, dialogEl);
-                modification.insert(dialogEl);
-                return dialogEl;
-            }
+            // render: function (windowEl, options) {
+            //     var dialogEl = this[_dialogEl] = modification.create('div', {
+            //         'class': namespace,
+            //         id: namespace + '-' + gid++
+            //     });
+            //
+            //     modification.insert(windowEl, dialogEl);
+            //     modification.insert(dialogEl);
+            //     return dialogEl;
+            // }
         });
 
         the[_initNode]();
@@ -354,6 +354,7 @@ pro[_initEvent] = function () {
 
     the.on('beforeOpen', function (pos) {
         scrollTop = layout.scrollTop(window);
+        console.log(scrollTop);
 
         if (the[_mask]) {
             the[_mask].zIndex(UI.zIndex()).open();
@@ -367,7 +368,8 @@ pro[_initEvent] = function () {
 
     the.on('open', function (pos) {
         // 因为 window 外层包裹着 fixed 定位的 dialog，所以要减去窗口的滚动条距离
-        pos.top -= scrollTop;
+        // var topRate = this.getOptions('topRate');
+        // pos.top = layout.height(window) * topRate * topRate;
     });
 
     if (the[_closeEl]) {

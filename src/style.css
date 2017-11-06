@@ -1,55 +1,49 @@
-.blearui-dialog {
-  position: fixed;
+.blearui-dialog-header {
+  text-align: center;
+  background: #F7F7F7;
+  border-bottom: 1px solid #eee; }
+  .blearui-dialog-header-title {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+    line-height: 40px;
+    height: 40px;
+    overflow: hidden; }
+
+.blearui-dialog-inner {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  -webkit-border-radius: 6px;
+  border-radius: 6px; }
+
+.blearui-dialog-close {
+  position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  display: none;
-  -webkit-overflow-scrolling: touch; }
-  .blearui-dialog-header {
-    text-align: center;
-    background: #F7F7F7;
-    border-bottom: 1px solid #eee; }
-    .blearui-dialog-header-title {
-      text-align: center;
-      font-size: 16px;
-      color: #444;
-      line-height: 40px;
-      height: 40px;
-      overflow: hidden; }
-  .blearui-dialog-inner {
-    overflow: hidden;
-    background: #fff;
-    border: 1px solid #e1e1e1;
-    -webkit-border-radius: 6px;
-    border-radius: 6px; }
-  .blearui-dialog-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    font: 20px/40px serif;
-    color: #bbb;
-    cursor: pointer; }
-    .blearui-dialog-close:hover {
-      color: #a2a2a2; }
-  .blearui-dialog-footer {
-    background: #fff;
-    border-top: 1px solid #eee;
-    display: table;
-    width: 100%; }
-    .blearui-dialog-footer-btn {
-      float: left;
-      width: 100%;
-      border: 0;
-      box-shadow: none; }
-    .blearui-dialog-footer_2 .blearui-dialog-footer-btn {
-      width: 50%; }
-    .blearui-dialog-footer_2 .blearui-dialog-footer-btn + .blearui-dialog-footer-btn,
-    .blearui-dialog-footer_3 .blearui-dialog-footer-btn + .blearui-dialog-footer-btn {
-      border-left: 1px solid #eee; }
-    .blearui-dialog-footer_3 .blearui-dialog-footer-btn {
-      width: 33.33333%; }
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font: 20px/40px serif;
+  color: #bbb;
+  cursor: pointer; }
+  .blearui-dialog-close:hover {
+    color: #a2a2a2; }
+
+.blearui-dialog-footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  display: table;
+  width: 100%; }
+  .blearui-dialog-footer-btn {
+    float: left;
+    width: 100%;
+    border: 0;
+    box-shadow: none; }
+  .blearui-dialog-footer_2 .blearui-dialog-footer-btn {
+    width: 50%; }
+  .blearui-dialog-footer_2 .blearui-dialog-footer-btn + .blearui-dialog-footer-btn,
+  .blearui-dialog-footer_3 .blearui-dialog-footer-btn + .blearui-dialog-footer-btn {
+    border-left: 1px solid #eee; }
+  .blearui-dialog-footer_3 .blearui-dialog-footer-btn {
+    width: 33.33333%; }

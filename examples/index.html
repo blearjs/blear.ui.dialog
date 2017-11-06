@@ -19,25 +19,57 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <title>index.html</title>
     <style>
+        #nox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            font-size: 20px;
+        }
+
         #demo {
             background: #fccfdc;
             height: 2000px;
+        }
+
+        ul li {
+            height: 300px;
+            margin-bottom: 20px;
+            background: #ffa9af;
         }
     </style>
 </head>
 <body ontouchstart="">
 
 
-<button id="open">open</button>
-<button id="resize">resize</button>
-<button id="close">close</button>
-<button id="open2">open loading</button>
+<div id="nox">
+    <button id="open">open</button>
+    <button id="resize">resize</button>
+    <button id="close">close</button>
+    <button id="open2">open loading</button>
+</div>
 
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 
 <div id="demo">很长</div>
 
 <script src="/node_modules/coolie.js/coolie.js"
-data-config="/example/coolie-config.js"
+data-config="/examples/coolie-config.js"
 data-main="index.js"></script>
 
 
