@@ -198,17 +198,7 @@ var Dialog = Window.extend({
             leftRate: 1 / 2,
             openAnimation: options.openAnimation,
             resizeAnimation: options.resizeAnimation,
-            closeAnimation: options.closeAnimation,
-            // render: function (windowEl, options) {
-            //     var dialogEl = this[_dialogEl] = modification.create('div', {
-            //         'class': namespace,
-            //         id: namespace + '-' + gid++
-            //     });
-            //
-            //     modification.insert(windowEl, dialogEl);
-            //     modification.insert(dialogEl);
-            //     return dialogEl;
-            // }
+            closeAnimation: options.closeAnimation
         });
 
         the[_initNode]();
@@ -366,12 +356,6 @@ pro[_initEvent] = function () {
         });
     });
 
-    the.on('open', function (pos) {
-        // 因为 window 外层包裹着 fixed 定位的 dialog，所以要减去窗口的滚动条距离
-        // var topRate = this.getOptions('topRate');
-        // pos.top = layout.height(window) * topRate * topRate;
-    });
-
     if (the[_closeEl]) {
         event.on(the[_closeEl], 'click', function () {
             the.close();
@@ -396,10 +380,8 @@ pro[_initEvent] = function () {
     });
 
     if (options.maskHit && the[_mask]) {
-        event.on(the.getOuterEl(), 'click', function (ev) {
-            if (this === ev.target) {
-                the.close();
-            }
+        event.on(the[_mask].getOuterEl(), 'click', function (ev) {
+            the.close();
         });
     }
 };
