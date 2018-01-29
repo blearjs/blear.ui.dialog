@@ -53,6 +53,12 @@ var defaults = object.assign(true, Window.defaults, {
     modal: true,
 
     /**
+     * 遮罩配置
+     * @type Object
+     */
+    maskOptions: {},
+
+    /**
      * 是否允许显示 header 部分
      * @type Boolean
      */
@@ -324,9 +330,8 @@ pro[_initNode] = function () {
     the[_footerEl] = the[_getElement]('footer');
 
     if (options.modal) {
-        the[_mask] = new Mask({
-            animationOptions: the.getOptions('animationOptions')
-        });
+        options.maskOptions.animationOptions = the.getOptions('animationOptions');
+        the[_mask] = new Mask(options.maskOptions);
     }
 
     if (the[_contentEl]) {

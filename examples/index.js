@@ -6,7 +6,10 @@ var Dialog = require('../src/index');
 var dialog = new Dialog({
     el: '#demo',
     width: 400,
-    maskHit: true
+    maskHit: true,
+    maskOptions: {
+        opacity: 0.9
+    }
 });
 
 document.getElementById('open').onclick = function () {
