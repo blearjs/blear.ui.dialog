@@ -14,7 +14,6 @@ var fun = require('blear.utils.function');
 var selector = require('blear.core.selector');
 var attribute = require('blear.core.attribute');
 var modification = require('blear.core.modification');
-var layout = require('blear.core.layout');
 var event = require('blear.core.event');
 var Animation = require('blear.classes.animation');
 var Template = require('blear.classes.template');
@@ -345,12 +344,8 @@ pro[_initNode] = function () {
 pro[_initEvent] = function () {
     var the = this;
     var options = the[_options];
-    var scrollTop;
 
     the.on('beforeOpen', function (pos) {
-        scrollTop = layout.scrollTop(window);
-        console.log(scrollTop);
-
         if (the[_mask]) {
             the[_mask].zIndex(UI.zIndex()).open();
         }
