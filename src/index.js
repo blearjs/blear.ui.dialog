@@ -58,6 +58,12 @@ var defaults = object.assign(true, Window.defaults, {
     maskOptions: {},
 
     /**
+     * 遮罩是否可穿透
+     * @type Boolean
+     */
+    maskThrough: false,
+
+    /**
      * 是否允许显示 header 部分
      * @type Boolean
      */
@@ -331,6 +337,11 @@ pro[_initNode] = function () {
     if (options.modal) {
         options.maskOptions.animationOptions = the.getOptions('animationOptions');
         the[_mask] = new Mask(options.maskOptions);
+        the[_mask].on('hit', function () {
+            if (options.maskHit) {
+                the.close();
+            }
+        });
     }
 
     if (the[_contentEl]) {
@@ -378,12 +389,6 @@ pro[_initEvent] = function () {
 
         attribute.hide(the[_dialogEl]);
     });
-
-    if (options.maskHit && the[_mask]) {
-        event.on(the[_mask].getOuterEl(), 'click', function (ev) {
-            the.close();
-        });
-    }
 };
 
 
