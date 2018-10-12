@@ -199,6 +199,11 @@ var Dialog = Window.extend({
         options.topRate = 1 / 3;
         options.leftRate = 1 / 2;
         options.position = 'absolute';
+
+        if (options.autoFocus === false) {
+            options.maskOptions.autoFocus = false;
+        }
+
         Dialog.parent(the, options);
         the[_initNode]();
         the[_initEvent]();
