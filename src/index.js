@@ -196,22 +196,10 @@ var Dialog = Window.extend({
         var the = this;
 
         options = the[_options] = object.assign(true, {}, defaults, options);
-        Dialog.parent(the, {
-            position: 'absolute',
-            width: options.width,
-            height: options.height,
-            minWidth: options.minWidth,
-            minHeight: options.minHeight,
-            maxWidth: options.maxWidth,
-            maxHeight: options.maxHeight,
-            autoFocus: options.autoFocus,
-            topRate: 1 / 3,
-            leftRate: 1 / 2,
-            openAnimation: options.openAnimation,
-            resizeAnimation: options.resizeAnimation,
-            closeAnimation: options.closeAnimation
-        });
-
+        options.topRate = 1 / 3;
+        options.leftRate = 1 / 2;
+        options.position = 'absolute';
+        Dialog.parent(the, options);
         the[_initNode]();
         the[_initEvent]();
     },
