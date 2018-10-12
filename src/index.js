@@ -24,7 +24,6 @@ var UI = require('blear.ui');
 var template = require('./template.html');
 
 var tpl = new Template(template);
-var gid = 0;
 var namespace = UI.UI_CLASS + '-dialog';
 var defaults = object.assign(true, Window.defaults, {
     /**
@@ -205,6 +204,7 @@ var Dialog = Window.extend({
             minHeight: options.minHeight,
             maxWidth: options.maxWidth,
             maxHeight: options.maxHeight,
+            autoFocus: options.autoFocus,
             topRate: 1 / 3,
             leftRate: 1 / 2,
             openAnimation: options.openAnimation,
