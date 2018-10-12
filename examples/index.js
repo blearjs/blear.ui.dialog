@@ -7,11 +7,14 @@ var dialog = new Dialog({
     el: '#demo',
     width: 400,
     buttons: [{
-        text: '按钮，但不能点1',
+        text: '按钮1',
         type: 'primary'
     },{
-        text: '按钮，但不能点2',
-        type: 'secondary'
+        text: '按钮3',
+        type: 'success'
+    },{
+        text: '按钮4',
+        type: 'danger'
     }]
 });
 
