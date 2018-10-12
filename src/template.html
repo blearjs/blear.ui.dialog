@@ -1,16 +1,24 @@
 <div class="blearui-dialog-inner {{options.addClass ? options.addClass : ''}}">
 
-    <div class="blearui-dialog-header" @if="options.headable">
-        <div class="blearui-dialog-header-title">{{options.title}}</div>
+    {{#if options.headable}}
+    <div class="blearui-dialog-header">
+        <div class="blearui-dialog-header-title">{{=options.title}}</div>
     </div>
+    {{/if}}
 
-    <div class="blearui-dialog-close" @if="options.closeable">&times;</div>
+    {{#if options.closeable}}
+    <div class="blearui-dialog-close">&times;</div>
+    {{/if}}
 
     <div class="blearui-dialog-container"></div>
 
-    <div @if="options.buttons.length" class="blearui-dialog-footer blearui-dialog-footer_{{options.buttons.length}}">
-        <button @for="index, button in options.buttons"
-                class="blearui-dialog-footer-btn blearui-dialog-footer-btn_{{index}} {{button.type ? 'blearbtn blearbtn_' + button.type : ''}} {{button.className ? button.className : ''}}"
-                data-index="{{index}}">{{button.text}}</button>
+    {{#if options.buttons.length}}
+    <div class="blearui-dialog-footer blearui-dialog-footer_{{options.buttons.length}}">
+        {{#for index, button in options.buttons}}
+        <button class="blearui-dialog-footer-btn blearui-dialog-footer-btn_{{index}} {{button.type ? 'blearbtn blearbtn_' + button.type : ''}} {{button.className ? button.className : ''}}"
+                data-index="{{index}}">{{=button.text}}
+        </button>
+        {{/for}}
     </div>
+    {{/if}}
 </div>
